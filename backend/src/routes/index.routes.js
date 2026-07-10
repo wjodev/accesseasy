@@ -1,0 +1,12 @@
+import { Router } from "express";
+
+const router = Router();
+
+router.get("/", (req, res) =>{
+    return res.status(200).json({
+        status: "on",
+        message:" rota: / ta ok"
+    });
+});
+
+export default router;
