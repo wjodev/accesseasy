@@ -8,9 +8,9 @@ class userService {
 
     }
 
-    async buscarUsuario(consulta) {
-        console.log ("usuario no serviço", consulta);
-        return await userRepository.buscarUsuario(consulta);
+    async buscarUsuario(cpf) {
+        console.log ("usuario no serviço", cpf);
+        return await userRepository.buscarUsuario(cpf);
     }
 }
 

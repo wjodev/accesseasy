@@ -13,8 +13,10 @@ class UserController {
 
         async buscarUsuario(req, res) {
 
-            console.log("controller buscar req", req.body);
-            const consulta = await userService.buscarUsuario(req.body);
+            const { cpf } = req.params;
+
+            console.log("controller buscar req",cpf);
+            const consulta = await userService.buscarUsuario(cpf);
 
             return res.status(201).json(consulta);
             

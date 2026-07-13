@@ -19,8 +19,7 @@ class UserRepository {
         return result.rows[0];
     }
 
-    async buscarUsuario(consulta){
-        const {cpf}=consulta;
+    async buscarUsuario(cpf){
 
         const sql = "SELECT nome, email FROM usuarios WHERE cpf = $1";
         
