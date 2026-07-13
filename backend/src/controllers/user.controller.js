@@ -10,6 +10,15 @@ class UserController {
             return res.status(201).json(usuario);
             
         }
+
+        async buscarUsuario(req, res) {
+
+            console.log("controller buscar req", req.body);
+            const consulta = await userService.buscarUsuario(req.body);
+
+            return res.status(201).json(consulta);
+            
+        }
 }
 
 export default new UserController();

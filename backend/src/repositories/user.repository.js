@@ -18,6 +18,17 @@ class UserRepository {
 
         return result.rows[0];
     }
+
+    async buscarUsuario(consulta){
+        const {cpf}=consulta;
+
+        const sql = "SELECT nome, email FROM usuarios WHERE cpf = $1";
+        
+        const result = await db.query (sql,[cpf]);      
+        return result.rows[0];
+    }
+
+
 };
 
 export default new UserRepository();

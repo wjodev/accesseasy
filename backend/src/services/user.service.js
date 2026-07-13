@@ -7,6 +7,11 @@ class userService {
         return await userRepository.cadastrar(usuario);
 
     }
+
+    async buscarUsuario(consulta) {
+        console.log ("usuario no serviço", consulta);
+        return await userRepository.buscarUsuario(consulta);
+    }
 }
 
 export default new userService();
