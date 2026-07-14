@@ -3,6 +3,12 @@ import userRepository from "../repositories/user.repository.js";
 class userService {
 
     async cadastrar(usuario) {
+        const {nome, cpf, email, senha, telefone} = usuario;
+
+        if(!nome || !cpf || !email || !senha || !telefone) {
+            throw new Error("Preencha todos os campos");
+        }
+
         return await userRepository.cadastrar(usuario);
     }
 

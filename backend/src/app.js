@@ -6,6 +6,7 @@ import db from "./config/db.js";
 //----------------------rotas------------------
 import routes from "./routes/index.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
 
 
 dotenv.config(); 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use(routes);
 app.use(userRoutes);
+app.use(errorMiddleware);
 
 
 const PORT = process.env.PORT || 3000;
