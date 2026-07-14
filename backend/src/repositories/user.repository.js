@@ -36,5 +36,11 @@ class UserRepository {
             id]);
         return result.rows[0];
     }
+
+    async remover(id){
+        const sql = "DELETE FROM usuarios WHERE id = $1 RETURNING nome, cpf, email;";
+        const result = await db.query (sql,[id]);
+        return result.rows[0];
+    }
 };
 export default new UserRepository();

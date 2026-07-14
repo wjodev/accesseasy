@@ -7,5 +7,6 @@ router.post("/usuarios", userController.cadastrar);
 router.get ("/usuarios", userController.listar);
 router.get("/usuarios/:cpf", userController.buscarUsuario);
 router.put("/usuarios/:id", userController.atualizar);
+router.delete("/usuarios/:id", userController.remover);
 
 export default router;

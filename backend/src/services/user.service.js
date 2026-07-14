@@ -17,6 +17,11 @@ class userService {
     async atualizar(usuario, id) {
         return await userRepository.atualizar(usuario, id);
     }
+
+    async remover(id){
+        return await userRepository.remover(id);
+        
+    }
 }
 
 export default new userService();
