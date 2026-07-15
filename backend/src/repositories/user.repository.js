@@ -25,6 +25,11 @@ class UserRepository {
         const result = await db.query (sql,[cpf]);      
         return result.rows[0];
     }
+    async buscarEmail(email){
+        const sql = "SELECT nome, email FROM usuarios WHERE email = $1";
+        const result = await db.query (sql,[email]);      
+        return result.rows[0];
+    }
 
     async atualizar(usuario, id){
         const {email, senha, telefone} = usuario;
