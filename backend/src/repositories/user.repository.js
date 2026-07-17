@@ -15,18 +15,18 @@ class UserRepository {
     }
 
     async listar(){
-        const sql = "SELECT id, nome, email, telefone FROM usuarios";
+        const sql = "SELECT id, nome, email, telefone FROM usuarios;";
         const result = await db.query (sql);      
         return result.rows;
     }
 
-    async buscarUsuario(cpf){
-        const sql = "SELECT nome, email FROM usuarios WHERE cpf = $1";
+    async buscarCPF(cpf){
+        const sql = "SELECT nome, email FROM usuarios WHERE cpf = $1;";
         const result = await db.query (sql,[cpf]);      
         return result.rows[0];
     }
     async buscarEmail(email){
-        const sql = "SELECT nome, email FROM usuarios WHERE email = $1";
+        const sql = "SELECT id, nome, email FROM usuarios WHERE email = $1;";
         const result = await db.query (sql,[email]);      
         return result.rows[0];
     }
@@ -45,6 +45,12 @@ class UserRepository {
     async remover(id){
         const sql = "DELETE FROM usuarios WHERE id = $1 RETURNING nome, cpf, email;";
         const result = await db.query (sql,[id]);
+        return result.rows[0];
+    }
+
+    async autenticar(email){
+        const sql = "SELECT id, nome, cpf, email, senha FROM usuarios WHERE email = $1;";
+        const result = await db.query (sql,[email]);
         return result.rows[0];
     }
 };

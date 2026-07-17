@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 
 
 try {
-    const result = await db.connect();
+    await db.connect();
     console.log("Banco ok");
 } catch (error) {
     console.error("Errro banco:", error.message);
