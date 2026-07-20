@@ -1,5 +1,6 @@
 import userRepository from "../repositories/user.repository.js";
 import emailUtil from "../utils/email.util.js";
+import jwtUtil from "../utils/jwt.util.js";
 import bcrypt from "bcrypt";
 
 class AuthService{
@@ -36,10 +37,15 @@ class AuthService{
         if(!senhaCorreta){
             throw new Error("E-mail ou senha incorretos.")
         }
+
+        //---------------------gera jwt----------------------------------
         
         const usuarioRetornado = {id: usuario.id, nome: usuario.nome, email: usuario.email};
 
-        return(usuarioRetornado)
+        const token = await jwtUtil.gerarToken(usuarioRetornado);
+        
+        const  usuarioToken = {usuario: usuarioRetornado, token: token};
 
+        return (usuarioToken);
     }
 }export default new AuthService();
