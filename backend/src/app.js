@@ -6,15 +6,16 @@ import db from "./config/db.js";
 //----------------------rotas------------------
 import routes from "./routes/index.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import acessibilidadeRoutes from "./routes/acessibilidade.routes.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 
 
-dotenv.config(); 
 const app = express();
 app.use(express.json());
 
 app.use(routes);
 app.use(userRoutes);
+app.use(acessibilidadeRoutes);
 app.use(errorMiddleware);
 
 
