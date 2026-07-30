@@ -1,12 +1,14 @@
 import express from "express";
-import dotenv  from "dotenv";
+import "dotenv/config";
 import db from "./config/db.js";
+
 
 
 //----------------------rotas------------------
 import routes from "./routes/index.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import acessibilidadeRoutes from "./routes/acessibilidade.routes.js";
+import enderecoRoutes from "./routes/endereco.routes.js"
 import errorMiddleware from "./middlewares/error.middleware.js";
 
 
@@ -16,6 +18,7 @@ app.use(express.json());
 app.use(routes);
 app.use(userRoutes);
 app.use(acessibilidadeRoutes);
+app.use(enderecoRoutes);
 app.use(errorMiddleware);
 
 
