@@ -38,12 +38,44 @@ class EnderecoRepository{
 
     async atualizar(id,endereco){
 
+      const  { cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude} = endereco
+      const sql = (`UPDATE enderecos SET 
+                cep = $1,
+                estado = $2,
+                cidade = $3,
+                bairro = $4,
+                rua = $5,
+                numero = $6,
+                complemento = $7,
+                latitude = $8,
+                longitude = $9
+
+                WHERE id = $10
+                 
+                RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`)
+
+      const result = await db.query(sql, [cep,
+        estado,
+        cidade,
+        bairro,
+        rua,
+        numero, 
+        complemento,
+        latitude,
+        longitude, 
+        id]);
+        
+        return result.rows[0];
+
     }
 
     async remover(id){
+      const sql = (`DELETE FROM enderecos WHERE id = $1
+         RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`);
+      const result = await db.query(sql, [id]);
+      return result.rows[0];
         
     }
 
 
 }export default new EnderecoRepository();
-

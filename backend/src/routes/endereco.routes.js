@@ -9,4 +9,5 @@ router.get("/enderecos/:id", EnderecoController.listarId);
 router.put("/enderecos/:id", EnderecoController.atualizar);
 router.delete("/enderecos/:id", EnderecoController.remover);
 
+
 export default router;

@@ -8,7 +8,7 @@ class EnderecoController {
     }
 
     async listar(req, res) {
-        const listados = await EnderecoService.listar(req.body);
+        const listados = await EnderecoService.listar();
         return res.status(200).json(listados)
 
     }
@@ -20,11 +20,16 @@ class EnderecoController {
     }
 
     async atualizar(req, res) {
-
+        const { id } = req.params;
+        const endereco = req.body;
+        const atualizado = await EnderecoService.atualizar(id, endereco);
+        return res.status(200).json(atualizado);
     }
 
     async remover(req, res) {
-
+        const { id } = req.params;
+        const removido = await EnderecoService.remover(id);
+        return res.status(200).json(removido);
     }
 
 }
