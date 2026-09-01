@@ -14,13 +14,13 @@ class ViaCepUtil {
             throw new Error("Erro ao consultar o ViaCEP.");
         }
 
-        const endereco = await response.json();
+        const localizacao = await response.json();
 
-        if (endereco.erro) {
+        if (localizacao.erro) {
             throw new Error("CEP não encontrado.");
         }
 
-        return endereco;
+        return localizacao;
     }
 
 }

@@ -1,14 +1,28 @@
 import jwt from "jsonwebtoken";
 
-class JwtUtil{
+class JwtUtil {
 
-    gerarToken(usuario){
-        const {id, nome, email} = usuario
-        const token =  jwt.sign({id, nome, email}, process.env.JWT_SECRET,  
+    gerarToken(usuario) {
+        const {
+            id,
+            nome,
+            email,
+            tipo_usuario_id
+        } = usuario;
+
+        return jwt.sign(
             {
-            expiresIn: process.env.JWT_EXPIRES_IN
-            });
-        return (token);
+                id,
+                nome,
+                email,
+                tipo_usuario_id
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: process.env.JWT_EXPIRES_IN
+            }
+        );
     }
+}
 
-} export default new JwtUtil();
+export default new JwtUtil();

@@ -1,12 +1,12 @@
 import db from "../config/db.js";
 
-class EnderecoRepository{
+class LocalizacaoRepository{
 
-    async cadastrar(endereco){
-      const  { cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude} = endereco
-      const sql = (`INSERT INTO enderecos (cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude) 
+    async cadastrar(localizacao){
+      const  { cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude} = localizacao;
+      const sql = `INSERT INTO localizacao (cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude) 
                 VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) 
-                RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`)
+                RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`;
       const result = await db.query(sql, [cep,
         estado,
         cidade,
@@ -21,25 +21,25 @@ class EnderecoRepository{
     }
 
     async listar(){
-      const sql = (`SELECT id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude
-                  FROM enderecos ORDER BY id`);
+      const sql = `SELECT id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude
+                  FROM localizacao ORDER BY id`;
       const result = await db.query(sql);
       return result.rows;
     }
 
     async listarId(id){
 
-        const sql = (`SELECT id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude
-                    FROM enderecos WHERE id = $1`);
+        const sql = `SELECT id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude
+                    FROM localizacao WHERE id = $1`;
         const result = await db.query(sql, [id]);
         return result.rows[0];
 
     }
 
-    async atualizar(id,endereco){
+    async atualizar(id,localizacao){
 
-      const  { cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude} = endereco
-      const sql = (`UPDATE enderecos SET 
+      const  { cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude} = localizacao
+      const sql = `UPDATE localizacao SET 
                 cep = $1,
                 estado = $2,
                 cidade = $3,
@@ -52,7 +52,7 @@ class EnderecoRepository{
 
                 WHERE id = $10
                  
-                RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`)
+                RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`;
 
       const result = await db.query(sql, [cep,
         estado,
@@ -70,12 +70,12 @@ class EnderecoRepository{
     }
 
     async remover(id){
-      const sql = (`DELETE FROM enderecos WHERE id = $1
-         RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`);
+      const sql = `DELETE FROM localizacao WHERE id = $1
+         RETURNING id,cep, estado, cidade, bairro, rua, numero, complemento, latitude, longitude;`;
       const result = await db.query(sql, [id]);
       return result.rows[0];
         
     }
 
 
-}export default new EnderecoRepository();
+}export default new LocalizacaoRepository();

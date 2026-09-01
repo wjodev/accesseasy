@@ -30,32 +30,32 @@ class AcessibilidadeController{
         return res.status(200).json(removidos);
     }
 
-    async cadastrarNecessidade(req, res){
-        const cadastrado = await AcessibilidadeService.cadastrarNecessidade(req.body);
+    async cadastrarSuporte(req, res){
+        const cadastrado = await AcessibilidadeService.cadastrarSuporte(req.body);
         return res.status(201).json(cadastrado);
     }
 
-    async listarNecessidades(req, res){
-        const listados = await AcessibilidadeService.listarNecessidades();
+    async listarSuporte(req, res){
+        const listados = await AcessibilidadeService.listarSuporte();
         return res.status(200).json(listados);
     }
 
-    async listarNecessidadesID(req, res){
+    async listarSuporteID(req, res){
         const {id} = req.params;
-        const listado = await AcessibilidadeService.listarNecessidadesID(id);
+        const listado = await AcessibilidadeService.listarSuporteID(id);
         return res.status(200).json(listado);
     }
 
-    async atualizarNecessidade(req, res){
+    async atualizarSuporte(req, res){
         const {id} = req.params;
-        const necessidade = req.body;
-        const atualizado = await AcessibilidadeService.atualizarNecessidade(id, necessidade);
+        const suporte = req.body;
+        const atualizado = await AcessibilidadeService.atualizarSuporte(id, suporte);
         return res.status(200).json(atualizado);
     }
 
-    async removerNecessidade(req, res){
+    async removerSuporte(req, res){
         const {id} = req.params
-        const removidos = await AcessibilidadeService.removerNecessidade(id);
+        const removidos = await AcessibilidadeService.removerSuporte(id);
         return res.status(200).json(removidos);
     }
 

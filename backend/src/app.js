@@ -8,8 +8,9 @@ import db from "./config/db.js";
 import routes from "./routes/index.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import acessibilidadeRoutes from "./routes/acessibilidade.routes.js";
-import enderecoRoutes from "./routes/endereco.routes.js"
+import localizacaoRoutes from "./routes/localizacao.routes.js"
 import errorMiddleware from "./middlewares/error.middleware.js";
+import proprietarioGestorRoutes from "./routes/proprietarioGestor.routes.js";
 
 
 const app = express();
@@ -18,8 +19,9 @@ app.use(express.json());
 app.use(routes);
 app.use(userRoutes);
 app.use(acessibilidadeRoutes);
-app.use(enderecoRoutes);
+app.use(localizacaoRoutes);
 app.use(errorMiddleware);
+app.use(proprietarioGestorRoutes)
 
 
 const PORT = process.env.PORT || 3000;

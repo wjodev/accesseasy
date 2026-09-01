@@ -40,7 +40,13 @@ class AuthService{
 
         //---------------------gera jwt----------------------------------
         
-        const usuarioRetornado = {id: usuario.id, nome: usuario.nome, email: usuario.email};
+        const usuarioRetornado = {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            tipo_usuario_id: usuario.tipo_usuario_id,
+            tipo_usuario: usuario.tipo_usuario
+        };
 
         const token = await jwtUtil.gerarToken(usuarioRetornado);
         

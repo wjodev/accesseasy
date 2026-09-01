@@ -3,18 +3,18 @@ import AcessibilidadeController from "../controllers/acessibilidade.controller.j
 
 
 const router = Router();
-//-------------------------rotas categorias------------------------------------------------
-router.post("/acessibilidades/categorias", AcessibilidadeController.cadastrarCategoria);
-router.put("/acessibilidades/categorias/:id", AcessibilidadeController.atualizarCategoria);
-router.get("/acessibilidades/categorias", AcessibilidadeController.listarCategoria);
-router.get("/acessibilidades/categorias/:id", AcessibilidadeController.listarCategoriaID);
-router.delete("/acessibilidades/categorias/:id", AcessibilidadeController.removerCategoria);
+//-------------------------rotas categoria------------------------------------------------
+router.post("/acessibilidades/categoria", AcessibilidadeController.cadastrarCategoria);
+router.put("/acessibilidades/categoria/:id", AcessibilidadeController.atualizarCategoria);
+router.get("/acessibilidades/categoria", AcessibilidadeController.listarCategoria);
+router.get("/acessibilidades/categoria/:id", AcessibilidadeController.listarCategoriaID);
+router.delete("/acessibilidades/categoria/:id", AcessibilidadeController.removerCategoria);
 
-//----------------------------rotas necessidades-------------------------------------------
-router.post("/acessibilidades/necessidades", AcessibilidadeController.cadastrarNecessidade);
-router.get("/acessibilidades/necessidades", AcessibilidadeController.listarNecessidades);
-router.get("/acessibilidades/necessidades/:id", AcessibilidadeController.listarNecessidadesID);
-router.put("/acessibilidades/necessidades/:id", AcessibilidadeController.atualizarNecessidade);
-router.delete("/acessibilidades/necessidades/:id", AcessibilidadeController.removerNecessidade);
+//----------------------------rotas suporte-------------------------------------------
+router.post("/acessibilidades/suporte", AcessibilidadeController.cadastrarSuporte);
+router.get("/acessibilidades/suporte", AcessibilidadeController.listarSuporte);
+router.get("/acessibilidades/suporte/:id", AcessibilidadeController.listarSuporteID);
+router.put("/acessibilidades/suporte/:id", AcessibilidadeController.atualizarSuporte);
+router.delete("/acessibilidades/suporte/:id", AcessibilidadeController.removerSuporte);
 
 export default router;

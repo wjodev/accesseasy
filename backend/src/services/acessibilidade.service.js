@@ -29,10 +29,10 @@ class AcessibilidadeService{
         return await AcessibilidadeRepository.removerCategoria(id)
     }
 
-    async cadastrarNecessidade(necessidade){
-        const {categoria_id, nome} = necessidade;
+    async cadastrarSuporte(suporte){
+        const {categoria_id, nome} = suporte;
         if(!nome|| nome.length <= 2 ){
-            throw new Error("o nome da necessidade deve ter mais que dois caracteres");
+            throw new Error("o nome do suporte deve ter mais que dois caracteres");
         }
 
         const categoriaConsulta = await this.listarCategoriaID(categoria_id);
@@ -41,7 +41,7 @@ class AcessibilidadeService{
             throw new Error("Categoria não existe")
         }
 
-        const cadastrado = await AcessibilidadeRepository.cadastrarNecessidade(necessidade);
+        const cadastrado = await AcessibilidadeRepository.cadastrarSuporte(suporte);
 
         const result = {
             id: cadastrado.id,
@@ -52,31 +52,31 @@ class AcessibilidadeService{
       return result
     }
 
-    async listarNecessidades(){
-        return await AcessibilidadeRepository.listarNecessidades();
+    async listarSuporte(){
+        return await AcessibilidadeRepository.listarSuporte();
     }
 
-    async listarNecessidadesID(id){
+    async listarSuporteID(id){
 
         if (!id) {
-            throw new Error("ID da necessidade é obrigatório");
+            throw new Error("ID do suporte é obrigatório");
         }
 
-        const necessidade = await AcessibilidadeRepository.listarNecessidadesID(id);
+        const suporte = await AcessibilidadeRepository.listarSuporteID(id);
 
-        if (!necessidade) {
-            throw new Error("Necessidade não encontrada");
+        if (!suporte) {
+            throw new Error("Suporte não encontrado");
         }
 
-        return necessidade;
+        return suporte;
     }
 
-    async atualizarNecessidade(id, necessidade){
+    async atualizarSuporte(id, suporte){
 
-        const {categoria_id, nome} = necessidade;
+        const {categoria_id, nome} = suporte;
 
         if(!nome|| nome.length <= 2 ){
-            throw new Error("o nome da necessidade deve ter mais que dois caracteres");
+            throw new Error("o nome do suporte deve ter mais que dois caracteres");
         }
 
         const categoriaConsulta = await this.listarCategoriaID(categoria_id);
@@ -85,12 +85,12 @@ class AcessibilidadeService{
             throw new Error("Categoria não existe")
         }
 
-        const verificaNecessidade = await this.listarNecessidadesID(id);
-        if(!verificaNecessidade){
-            throw new Error("Necessidade não encontrada");
+        const verificaSuporte = await this.listarSuporteID(id);
+        if(!verificaSuporte){
+            throw new Error("Suporte não encontrado");
         }
 
-        const atualizado = await AcessibilidadeRepository.atualizarNecessidade(id, necessidade)
+        const atualizado = await AcessibilidadeRepository.atualizarSuporte(id, suporte)
 
         const result = {
             id: atualizado.id,
@@ -102,14 +102,14 @@ class AcessibilidadeService{
         return result
     }
 
-    async removerNecessidade(id){
+    async removerSuporte(id){
 
-        const verificaNecessidade = await this.listarNecessidadesID(id);
-        if(!verificaNecessidade){
-            throw new Error("Necessidade não encontrada");
+        const verificaSuporte = await this.listarSuporteID(id);
+        if(!verificaSuporte){
+            throw new Error("Suporte não encontrado");
         }
 
-        const removido = await AcessibilidadeRepository.removerNecessidade(id);
+        const removido = await AcessibilidadeRepository.removerSuporte(id);
     
         return removido;
     }

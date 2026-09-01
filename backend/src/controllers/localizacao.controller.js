@@ -1,37 +1,37 @@
-import EnderecoService from "../services/endereco.service.js";
+import LocalizacaoService from "../services/localizacao.service.js";
 
-class EnderecoController {
+class LocalizacaoController {
 
     async cadastrar(req, res){
-        const cadastrado = await EnderecoService.cadastrar(req.body);
+        const cadastrado = await LocalizacaoService.cadastrar(req.body);
         return res.status(201).json(cadastrado);
     }
 
     async listar(req, res) {
-        const listados = await EnderecoService.listar();
+        const listados = await LocalizacaoService.listar();
         return res.status(200).json(listados)
 
     }
 
     async listarId(req, res) {
         const {id} = req.params;
-        const listado = await EnderecoService.listarId(id);
+        const listado = await LocalizacaoService.listarId(id);
         return res.status(200).json(listado);
     }
 
     async atualizar(req, res) {
         const { id } = req.params;
-        const endereco = req.body;
-        const atualizado = await EnderecoService.atualizar(id, endereco);
+        const localizacao = req.body;
+        const atualizado = await LocalizacaoService.atualizar(id, localizacao);
         return res.status(200).json(atualizado);
     }
 
     async remover(req, res) {
         const { id } = req.params;
-        const removido = await EnderecoService.remover(id);
+        const removido = await LocalizacaoService.remover(id);
         return res.status(200).json(removido);
     }
 
 }
 
-export default new EnderecoController();
+export default new LocalizacaoController();
